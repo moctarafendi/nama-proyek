@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'BuatTableAnggota' => $baseDir . '/database/migrations/2018_06_24_151431_buat_table_anggota.php',
+    'BuatTableHobi' => $baseDir . '/database/migrations/2018_06_25_104613_buat_table_hobi.php',
     'CreateAnggotasTable' => $baseDir . '/database/migrations/2018_06_24_155017_create_anggotas_table.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
@@ -424,6 +425,7 @@ return array(
     'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => $vendorDir . '/sebastian/recursion-context/src/InvalidArgumentException.php',
     'SebastianBergmann\\Version' => $vendorDir . '/sebastian/version/src/Version.php',
     'SeederTableAnggota' => $baseDir . '/database/seeds/SeederTableAnggota.php',
+    'SeederTableHobi' => $baseDir . '/database/seeds/SeederTableHobi.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'TestCase' => $baseDir . '/tests/TestCase.php',
     'Text_Template' => $vendorDir . '/phpunit/php-text-template/Text/Template.php',

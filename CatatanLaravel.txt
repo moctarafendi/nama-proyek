@@ -1,5 +1,6 @@
 ################# Web:
 1. GIT -> http://www.tutorial-webdesign.com/tutorial-git-instalasi-penggunaan-upload-proyek-ke-github/
+
 ################# Persiapan:
 1. jalankan composer install di master laravel 5
 2. buat database
@@ -7,10 +8,48 @@
 4. setting file .env (khusus versi laravel 5 keatas) (edit database, username, password)
 5. buat file migration (fungsi: mencatat setiap perubahan):
 	- jalankan php artisan make:migration nama_file
-	- ubah isian file migration (up: create, down: drop) . di folder database/migrations
+	- ubah isian file migration (up: Schema create, down: Schema drop) . di folder database/migrations
 	- jalankan php artisan migrate
+	
+	#########################
+	Schema::create('hobi', function(Blueprint $table){
+			$table->increments('id');
+			$table->string('hobi');
+			$table->integer('anggota_id');
+			$table->timestamps();
+
+		});
+	
+	#########################
+	Schema::drop('hobi');
+		
 6. buat file seeder (fungsi: data contoh/dummy):
 	- buat sebuah file nama_file.php di dalam folder database/seeds
+	
+	#########################
+	<?php
+	use Illuminate\Database\Seeder;
+
+
+
+	class SeederTableAnggota extends Seeder{
+		public function run(){
+			//kosongkan table anggota
+			DB::table('anggota')->delete();
+			//buat data berupa array untuk diinput ke database
+			$anggota = array(
+								array('id'=>'1', 'nama'=>'Akhmad Darma Kasman', 'alamat'=>'Jakarta'),
+								array('id'=>'2', 'nama'=>'Kresna Abimanyu', 'alamat'=>'Bogor'),
+								array('id'=>'3', 'nama'=>'Dewi Retno', 'alamat'=>'Depok')
+							);
+			//masukkan data ke database
+			DB::table('anggota')->insert($anggota);
+		}
+
+	}
+?>
+
+
 	- buka file DatabaseSeeder.php di database/seeds lalu edit script pada bagian run() : this->call('nama_file_seeder')
 	- jalankan composer dump-autoload
 	- jalankan php artisan db:seed
@@ -18,4 +57,68 @@
 	- jalankan php artisan make:model nama_file
 	- edit file di folder App/nama_file (edit: Table dan fillable)
 	- memanggil model dengan cara edit file app/http/routes.php
+		
+	#########################
+	Read data pertama
+	Route::get('/cobamodel', function(){
+		$anggota = App\Anggota::all()->first();
+		echo $anggota->nama;
+		echo $anggota->alamat;
 
+	});
+
+	##########################
+	Read data with where
+	Route::get('/cobamodel', function(){
+		$anggota = App\Anggota::where('nama','=', 'Taylor Otwell')->first();
+
+		echo $anggota->id.' ';
+		echo $anggota->nama;
+
+	});
+
+
+	##########################
+	Read data Looping
+	Route::get('/cobamodel', function(){
+		$anggota = App\Anggota::all();
+		foreach($anggota as $list){
+			echo $list->id.' ';
+			echo $list->nama.' ';
+			echo $list->alamat;
+			echo '<br>';
+		}
+		
+	});
+
+	##########################
+	Insert Data via Route
+	Route::get('/cobamodel', function(){
+		$anggota = new App\Anggota;
+		$anggota->nama = 'Taylor Otwell';
+		$anggota->alamat = 'Avenue Park 12';
+		$anggota->save();
+
+	});
+	
+	##########################
+	Update Data via Route
+	Route::get('/cobamodel', function(){
+		$anggota = App\Anggota::find(4);
+
+		$anggota->nama = 'John Doe';
+		$anggota->alamat = 'Silicon Valley';
+		$anggota->save();
+
+	});
+
+	##########################
+	Delete Data
+	Route::get('/cobamodel', function(){
+		$anggota = App\Anggota::find(4);
+		$anggota->delete();
+
+	});
+	
+
+8. Membuat Relationship
