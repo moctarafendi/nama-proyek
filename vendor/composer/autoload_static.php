@@ -211,6 +211,7 @@ class ComposerStaticInitec65a8d62f9e7b7310259eea2ca69b57
 
     public static $classMap = array (
         'BuatTableAnggota' => __DIR__ . '/../..' . '/database/migrations/2018_06_24_151431_buat_table_anggota.php',
+        'BuatTableHobi' => __DIR__ . '/../..' . '/database/migrations/2018_06_25_104613_buat_table_hobi.php',
         'CreateAnggotasTable' => __DIR__ . '/../..' . '/database/migrations/2018_06_24_155017_create_anggotas_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
@@ -628,6 +629,7 @@ class ComposerStaticInitec65a8d62f9e7b7310259eea2ca69b57
         'SebastianBergmann\\RecursionContext\\InvalidArgumentException' => __DIR__ . '/..' . '/sebastian/recursion-context/src/InvalidArgumentException.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
         'SeederTableAnggota' => __DIR__ . '/../..' . '/database/seeds/SeederTableAnggota.php',
+        'SeederTableHobi' => __DIR__ . '/../..' . '/database/seeds/SeederTableHobi.php',
         'SessionHandlerInterface' => __DIR__ . '/..' . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
         'TestCase' => __DIR__ . '/../..' . '/tests/TestCase.php',
         'Text_Template' => __DIR__ . '/..' . '/phpunit/php-text-template/Text/Template.php',
