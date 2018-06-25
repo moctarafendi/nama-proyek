@@ -213,6 +213,7 @@ class ComposerStaticInitec65a8d62f9e7b7310259eea2ca69b57
         'BuatTableAnggota' => __DIR__ . '/../..' . '/database/migrations/2018_06_24_151431_buat_table_anggota.php',
         'BuatTableHobi' => __DIR__ . '/../..' . '/database/migrations/2018_06_25_104613_buat_table_hobi.php',
         'CreateAnggotasTable' => __DIR__ . '/../..' . '/database/migrations/2018_06_24_155017_create_anggotas_table.php',
+        'CreateHobisTable' => __DIR__ . '/../..' . '/database/migrations/2018_06_25_143706_create_hobis_table.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
