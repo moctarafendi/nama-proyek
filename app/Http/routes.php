@@ -96,3 +96,8 @@ Route::get('/halamanku', function(){
 
 	return view('halamanku');
 });
+
+Route::get('/blade-sample', function(){
+	return view('blade-sample');
+
+});

@@ -168,3 +168,45 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 
 	});
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+11. Blade (template engine bawaan laravel)
+
+	- {{}}    pengganti echo php
+	- {!!  !!}    menampilkan hasil input user dengan membersihkan dari script
+
+	##########################
+	Route::get('/blade-sample', function(){
+		return view('blade-sample');
+
+	});
+
+	##########################
+	@foreach(array(1,2,3) as $a)
+	{{$a}}
+	@endforeach
+
+	- storage/framework/views terdapat file hasil terjemahan blade
+
+
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+12. Form
+	- Form Open
+
+		{{ Form::open() }}
+
+		{{ Form::open(array('url' => 'http://www.tujuan.site')) }}
+
+		{{ Form::open(array('route' => 'tujuan.route')) }}
+
+		{{ Form::open(array('action'=> 'NamaController@method')) }}
+
+	- Form model (membinding data dari hotel)
+
+		{{ Form::model($item, array('route' => array('item-ganti', $item->id))) }}
+
+	- Form Close
+
+		{{ Form::close }}
