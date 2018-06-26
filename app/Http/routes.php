@@ -81,3 +81,18 @@ Route::controllers([
 // 	$anggota->delete();
 
 // });
+
+Route::get('/relasi', function(){
+	#temukan anggota tertentu
+	$anggota = App\Anggota::where('nama', '=', 'Akhmad Darma Kasman')->first();
+	echo $anggota->nama.' '.'hobinya: ';
+	#tampilkan seluruh data hobinya
+	foreach($anggota->hobi as $list){
+		echo '<li>'.$list->hobi;
+	}
+});
+
+Route::get('/halamanku', function(){
+
+	return view('halamanku');
+});

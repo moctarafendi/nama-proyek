@@ -2,11 +2,26 @@
 1. GIT -> http://www.tutorial-webdesign.com/tutorial-git-instalasi-penggunaan-upload-proyek-ke-github/
 
 ################# Persiapan:
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 1. jalankan composer install di master laravel 5
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 2. buat database
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 3. edit file di folder config/database.php (edit database, username, password)
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 4. setting file .env (khusus versi laravel 5 keatas) (edit database, username, password)
-5. buat file migration (fungsi: mencatat setiap perubahan):
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+5. buat model dari tiap tabel
+	- gunakan php artisan make:model nama_tabel
+	- tambahkan script pada file model
+
+	#########################
+	protected $table = 'anggota';
+	protected $fillable = ['nama', 'alamat'];
+
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+6. buat file migration (fungsi: mencatat setiap perubahan):
 	- jalankan php artisan make:migration nama_file
 	- ubah isian file migration (up: Schema create, down: Schema drop) . di folder database/migrations
 	- jalankan php artisan migrate
@@ -22,8 +37,9 @@
 	
 	#########################
 	Schema::drop('hobi');
-		
-6. buat file seeder (fungsi: data contoh/dummy):
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+7. buat file seeder (fungsi: data contoh/dummy):
 	- buat sebuah file nama_file.php di dalam folder database/seeds
 	
 	#########################
@@ -53,7 +69,9 @@
 	- buka file DatabaseSeeder.php di database/seeds lalu edit script pada bagian run() : this->call('nama_file_seeder')
 	- jalankan composer dump-autoload
 	- jalankan php artisan db:seed
-7. membuat Eloquent Model (memetakan db relational ke model objek);
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+8. membuat Eloquent Model (memetakan db relational ke model objek);
 	- jalankan php artisan make:model nama_file
 	- edit file di folder App/nama_file (edit: Table dan fillable)
 	- memanggil model dengan cara edit file app/http/routes.php
@@ -120,5 +138,33 @@
 
 	});
 	
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+9. Membuat Relationship
+	- pada file model, tambahkan fungsi hasMany atau hasOne
 
-8. Membuat Relationship
+	##########################
+	public function hobi(){
+		return $this->hasMany('App\hobi');
+
+	}
+
+	- buat model yg menjadi tujuannya, php artisan make:model nama_tabel
+	- tambahkan 
+
+
+	##########################
+	public function anggota(){
+		return $this->belongsTo('App\Anggota');
+
+	}
+
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+10. View (hanya berisi variabel2 untuk ditampilkan)
+	- folder resources/view
+
+	##########################
+	Route::get('/halamanku', function(){
+		return view('halamanku');
+
+
+	});
